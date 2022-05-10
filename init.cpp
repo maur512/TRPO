@@ -1,10 +1,10 @@
 
 
 
+#include "init.h"
 
-
-{void init() {
+void init() {
 
 	std::ifstream in("accountmanager.txt");
 	
-}}
+}
