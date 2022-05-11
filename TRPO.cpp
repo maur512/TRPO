@@ -2,22 +2,31 @@
 //
 
 
-#include <string>
-#include <iostream>
+#include "includer.h"
 #include "menu.h"
 #include "LoginAccess.h"
 #include "accountManager.h"
+#include "init.h"
 
 using namespace std;
 
 int main()
 {
+    std::vector<acc::UserAccounts>* accounts_pointer;
+    std::vector<acc::UserAccounts> accounts ;
+    accounts_pointer = &accounts;
+    accounts = initSize();
+    for (int i = 0; i < accounts.size(); i++) {
+    cout << accounts[i].login << endl;
+    cout << accounts[i].password << endl;
+    cout << accounts[i].role << endl;
+    cout << accounts[i].priority << endl;
     
+    }
     setlocale(LC_ALL, "Russian");
    showLoginMenu();
    while (login_input() == false);
     while (password_input() == false);
-       std::cout << "Hello git!" << endl;
         showAdminMenu(0);
         showAdminMenu(1);
         showAdminMenu(2);
@@ -25,7 +34,8 @@ int main()
         showSortMenu();
         showFindMenu();
         showUserMenu();
-        addAccount();
+        addAccount(accounts_pointer);
+        saveAccountsToFile(accounts);
     return 0;
 }
 

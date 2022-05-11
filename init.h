@@ -1,5 +1,7 @@
 #pragma once
 
-#include "accountManager.h"
+#include "includer.h"
+#include "md5.h"
 
-void init();
+
+std::vector<acc::UserAccounts> initSize();
