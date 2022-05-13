@@ -3,7 +3,7 @@
 
 
 #include "includer.h"
-#include "menu.h"
+#include "MainMenu.h"
 #include "LoginAccess.h"
 #include "accountManager.h"
 #include "init.h"
@@ -16,25 +16,10 @@ int main()
     std::vector<acc::UserAccounts> accounts ;
     accounts_pointer = &accounts;
     accounts = initSize();
-    for (int i = 0; i < accounts.size(); i++) {
-    cout << accounts[i].login << endl;
-    cout << accounts[i].password << endl;
-    cout << accounts[i].role << endl;
-    cout << accounts[i].priority << endl;
-    
-    }
     setlocale(LC_ALL, "Russian");
-   showLoginMenu();
-   while (login_input() == false);
-    while (password_input() == false);
-        showAdminMenu(0);
-        showAdminMenu(1);
-        showAdminMenu(2);
-        showAdminMenu(3);
-        showSortMenu();
-        showFindMenu();
-        showUserMenu();
-        addAccount(accounts_pointer);
+        showLoginMenu();
+        while(password_input(login_input(accounts_pointer)) != true);
+        while(adminMenu(accounts_pointer) != true);
         saveAccountsToFile(accounts);
     return 0;
 }
