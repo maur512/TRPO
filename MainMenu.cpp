@@ -1,7 +1,7 @@
 #include "MainMenu.h"
 
 bool adminMenu(std::vector<acc::UserAccounts>* accounts_pointer, std::vector<val::Values>* values_pointer) {
-    int menu_element = -1 , accounts_menu = -1, values_menu = -1, user_menu = -1;
+    int menu_element = -1 , accounts_menu = -1, values_menu = -1, user_menu = -1, sort_menu = -1;
     while (menu_element != 0){
     showAdminMenu(0);
         std::cin >> menu_element;
@@ -62,10 +62,20 @@ bool adminMenu(std::vector<acc::UserAccounts>* accounts_pointer, std::vector<val
                 case 0:
                 break;
                 case 1:
+            openValue(values_pointer);
                 break;
                 case 2:
                 break;
                 case 3:
+                while (sort_menu != 0) {
+                while (sort_menu <0 || sort_menu >4){
+            showSortMenu();
+            std::cin >> sort_menu;
+                }
+            if (sort_menu != 0) valuesSort(values_pointer,sort_menu); else break;
+            sort_menu = -1;
+                }
+            sort_menu = -1;
                 break;
                 case 4:
                 break;
@@ -100,9 +110,13 @@ int menu_element = -1 , sort_menu = -1, find_menu = -1, user_menu = -1;
             break;
             case 3:
             while (sort_menu != 0) {
+                while (sort_menu <0 || sort_menu >4){
             showSortMenu();
             std::cin >> sort_menu;
-            }
+                }
+            if (sort_menu != 0) valuesSort(values_pointer,sort_menu); else break;
+            sort_menu = -1;
+                }
             sort_menu = -1;
             break;
             case 4:
