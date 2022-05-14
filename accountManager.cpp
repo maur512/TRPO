@@ -2,7 +2,7 @@
 
 void addAccount(std::vector<acc::UserAccounts>* accounts_pointer){
     std::string login, password;
-    int role = -1, priority = -1;
+    int role = -1;
     std::cout << "Введите логин новой учётной записи: " << std::endl;    
     std::cin >> login;
     std::vector<acc::UserAccounts> :: iterator add_element;
@@ -17,11 +17,11 @@ void addAccount(std::vector<acc::UserAccounts>* accounts_pointer){
     std::cout << "Введите пароль новой учётной записи: " << std::endl;
     std::cin >> password;
     password = md5(password+acc::PASSWORD_SALT);
-    std::cout << "Введите приоритет новой учётной записи: " << std::endl;
-    std::cin >> priority;
-    std::cout << "Введите роль новой учётной записи: " << std::endl;
+    while (role != 1 && role != 2) {
+    std::cout << "Введите роль новой учётной записи (1- user, 2 - admin): " << std::endl;
     std::cin >> role;
-    accounts_pointer -> push_back(acc::UserAccounts(login, password, role, priority));
+    }
+    accounts_pointer -> push_back(acc::UserAccounts(login, password, role));
 
 } 
  void deleteAccount(std::vector<acc::UserAccounts>* accounts_pointer){
@@ -61,11 +61,10 @@ void editAccount(std::vector<acc::UserAccounts>* accounts_pointer){
     password = md5(password+acc::PASSWORD_SALT);
     
         edit_element ->password = password;
-    std::cout << "Введите новый приоритет редактируемой учётной записи: " << std::endl;
-    std::cin >> priority;
-        edit_element ->priority = priority;
-    std::cout << "Введите новую роль редактируемой учётной записи: " << std::endl;
+        while (role != 1 && role != 2 ) {
+    std::cout << "Введите новую роль редактируемой учётной записи (1 - user, 2 - admin): " << std::endl;
     std::cin >> role;
+        }
         edit_element ->role = role;
         std::cout << "Запись успешно отредактирована!" << std::endl;
             return;
@@ -80,25 +79,25 @@ void openAccount(std::vector<acc::UserAccounts>* accounts_pointer){
     while (open_element != accounts_pointer -> end()) {
     std::cout << i << ". login: " << open_element -> login <<
             "; password (hashed): " << open_element -> password <<
-            "; role: " << open_element -> role << "; priority: " <<
-            open_element -> priority << " ;" << std::endl;
+            "; role: " << open_element -> role << " ;" << std::endl;
     open_element++;
     i++;
         } 
     }
 
 
-acc::UserAccounts::UserAccounts(std::string login_, std::string password_, int role_, int priority_) {
+acc::UserAccounts::UserAccounts(std::string login_, std::string password_, int role_) {
 	password = password_;
 	login = login_;
 	role = role_;
-	priority = priority_;
 }
 
 void saveAccountsToFile(std::vector<acc::UserAccounts> accounts){
     std::ofstream out("accountmanager.txt");
+    std:: cout << "Сохранение аккаунтов в файл..." << std:: endl;
     for (int i = 0; i < accounts.size(); i++){
     out << accounts[i].login << ' ' << accounts[i].password 
-    << ' ' << accounts[i].role << ' ' << accounts[i].priority << std::endl;}
+    << ' ' << accounts[i].role << std::endl;}
     out.close();
+    std:: cout << "Сохранение завершено успешно!" << std:: endl;
 }

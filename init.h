@@ -5,3 +5,4 @@
 
 
 std::vector<acc::UserAccounts> initSize();
+std::vector<val::Values> initValues();

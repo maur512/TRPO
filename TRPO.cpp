@@ -15,12 +15,16 @@ int main()
     std::vector<acc::UserAccounts>* accounts_pointer;
     std::vector<acc::UserAccounts> accounts ;
     accounts_pointer = &accounts;
+    std::vector<val::Values>* values_pointer;
+    std::vector<val::Values> values ;
+    values_pointer = &values;
     accounts = initSize();
+    values = initValues();
     setlocale(LC_ALL, "Russian");
         showLoginMenu();
-        while(password_input(login_input(accounts_pointer)) != true);
-        while(adminMenu(accounts_pointer) != true);
+       while( logon(password_input(login_input(accounts_pointer)),accounts_pointer,values_pointer) != true);
         saveAccountsToFile(accounts);
+        saveValuesToFile(values);
     return 0;
 }
 
