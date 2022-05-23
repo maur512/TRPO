@@ -1,7 +1,7 @@
 #include "MainMenu.h"
 
 bool adminMenu(std::vector<acc::UserAccounts>* accounts_pointer, std::vector<val::Values>* values_pointer) {
-    int menu_element = -1 , accounts_menu = -1, values_menu = -1, user_menu = -1, sort_menu = -1;
+    int menu_element = -1 , accounts_menu = -1, values_menu = -1, user_menu = -1, sort_menu = -1, find_menu = -1;
     while (menu_element != 0){
     showAdminMenu(0);
         std::cin >> menu_element;
@@ -65,6 +65,27 @@ bool adminMenu(std::vector<acc::UserAccounts>* accounts_pointer, std::vector<val
             openValue(values_pointer);
                 break;
                 case 2:
+                    showFindMenu();
+                    std::cin >> find_menu;
+                
+                    if (find_menu != 0) {
+                        switch (find_menu) {
+                        case 1:
+                            findName(values_pointer);
+                            break;
+                        case 2:
+                            findDep(values_pointer);
+                            break;
+                        case 3:
+                            findWage(values_pointer);
+                            break;
+                        case 0:
+                            break;
+                        }
+                    
+                    }
+                    find_menu = -1;
+            
                 break;
                 case 3:
                 while (sort_menu != 0) {
@@ -78,6 +99,7 @@ bool adminMenu(std::vector<acc::UserAccounts>* accounts_pointer, std::vector<val
             sort_menu = -1;
                 break;
                 case 4:
+
                 break;
             }
             }
@@ -102,11 +124,26 @@ int menu_element = -1 , sort_menu = -1, find_menu = -1, user_menu = -1;
             openValue(values_pointer);
             break;
             case 2:
-            while(find_menu != 0){
-            showFindMenu();
-            std::cin >> find_menu;
-            }
-            find_menu = -1;
+                showFindMenu();
+                std::cin >> find_menu;
+
+                if (find_menu != 0) {
+                    switch (find_menu) {
+                    case 1:
+                        findName(values_pointer);
+                        break;
+                    case 2:
+                        findDep(values_pointer);
+                        break;
+                    case 3:
+                        findWage(values_pointer);
+                        break;
+                    case 0:
+                        break;
+                    }
+
+                }
+                find_menu = -1;
             break;
             case 3:
             while (sort_menu != 0) {

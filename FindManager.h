@@ -1,3 +1,8 @@
 #include "includer.h"
 
-val::Values findItem (std::vector<val::Values>*);
+
+
+
+void findName (std::vector<val::Values>*);
+void findDep(std::vector<val::Values>*);
+void findWage(std::vector<val::Values>*);
