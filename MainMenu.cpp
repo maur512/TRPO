@@ -4,14 +4,14 @@ bool adminMenu(std::vector<acc::UserAccounts>* accounts_pointer, std::vector<val
     int menu_element = -1 , accounts_menu = -1, values_menu = -1, user_menu = -1, sort_menu = -1, find_menu = -1;
     while (menu_element != 0){
     showAdminMenu(0);
-        std::cin >> menu_element;
+        menu_element = setIntValue();
         switch (menu_element) {
             case 0:
             break;
             case 1:
             while (accounts_menu != 0){
                 showAdminMenu(1);
-            std::cin >> accounts_menu;
+           accounts_menu = setIntValue();
             switch (accounts_menu) {
                 case 0:
                 break;
@@ -34,7 +34,7 @@ bool adminMenu(std::vector<acc::UserAccounts>* accounts_pointer, std::vector<val
             case 2:
             while (values_menu != 0){
                 showAdminMenu(2);
-            std::cin >> values_menu;
+            values_menu = setIntValue();
             switch (values_menu) {
                 case 0:
                 break;
@@ -57,7 +57,7 @@ bool adminMenu(std::vector<acc::UserAccounts>* accounts_pointer, std::vector<val
             case 3:
             while (user_menu != 0){
                 showAdminMenu(3);
-            std::cin >> user_menu;
+            user_menu = setIntValue();
             switch (user_menu) {
                 case 0:
                 break;
@@ -66,7 +66,7 @@ bool adminMenu(std::vector<acc::UserAccounts>* accounts_pointer, std::vector<val
                 break;
                 case 2:
                     showFindMenu();
-                    std::cin >> find_menu;
+                    find_menu = setIntValue();
                 
                     if (find_menu != 0) {
                         switch (find_menu) {
@@ -91,7 +91,7 @@ bool adminMenu(std::vector<acc::UserAccounts>* accounts_pointer, std::vector<val
                 while (sort_menu != 0) {
                 while (sort_menu <0 || sort_menu >4){
             showSortMenu();
-            std::cin >> sort_menu;
+            sort_menu = setIntValue();
                 }
             if (sort_menu != 0) valuesSort(values_pointer,sort_menu); else break;
             sort_menu = -1;
@@ -116,7 +116,7 @@ bool userMenu(std::vector<val::Values>* values_pointer) {
 int menu_element = -1 , sort_menu = -1, find_menu = -1, user_menu = -1;
     while (menu_element != 0){
     showUserMenu();
-        std::cin >> menu_element;
+        menu_element = setIntValue();
         switch (menu_element) {
             case 0:
             break;
@@ -125,8 +125,7 @@ int menu_element = -1 , sort_menu = -1, find_menu = -1, user_menu = -1;
             break;
             case 2:
                 showFindMenu();
-                std::cin >> find_menu;
-
+                find_menu = setIntValue();
                 if (find_menu != 0) {
                     switch (find_menu) {
                     case 1:
@@ -149,7 +148,7 @@ int menu_element = -1 , sort_menu = -1, find_menu = -1, user_menu = -1;
             while (sort_menu != 0) {
                 while (sort_menu <0 || sort_menu >4){
             showSortMenu();
-            std::cin >> sort_menu;
+            sort_menu = setIntValue();
                 }
             if (sort_menu != 0) valuesSort(values_pointer,sort_menu); else break;
             sort_menu = -1;
@@ -188,3 +187,5 @@ bool logon(std::vector<acc::UserAccounts>::iterator login_account, std::vector<a
     }
     return true;
 }
+
+

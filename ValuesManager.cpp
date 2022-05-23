@@ -15,7 +15,7 @@ void addValue(std::vector<val::Values>* values_pointer){
         add_element++;
     }
     std::cout << "Введите отдел нового работника: " << std::endl;
-    std::cin >> worker_dep;
+    worker_dep = setIntValue();
     while (worker_dep < 1 || worker_dep > 20) {
     std::cout << "Введите отдел (от 1 до 20): " << std::endl;
     std::cin >> worker_dep;
@@ -23,7 +23,7 @@ void addValue(std::vector<val::Values>* values_pointer){
     std::cout << "Введите должность нового работника: " << std::endl;
     std::cin >> worker_pos;
     std::cout << "Введите заработную плату за месяц нового работника: " << std::endl;
-    std::cin >> montly_wage;
+    montly_wage = setIntValue();
     values_pointer -> push_back(val::Values(worker_name,worker_pos,worker_dep,montly_wage));
 
 } 
@@ -63,11 +63,11 @@ void editValue(std::vector<val::Values>* values_pointer){
         edit_element ->worker_pos = worker_pos;
         while (worker_dep < 1 || worker_dep > 20 ) {
     std::cout << "Введите новый отдел редактируемого работника (от 1 до 20): " << std::endl;
-    std::cin >> worker_dep;
+    worker_dep = setIntValue();
         }
         edit_element ->worker_dep = worker_dep;
         std::cout << "Введите новую заработную плату за месяц редактируемого работника: " << std::endl;    
-    std::cin >> montly_wage;
+    montly_wage = setIntValue();
         edit_element ->montly_wage = montly_wage;
         std::cout << "Запись успешно отредактирована!" << std::endl;
             return;

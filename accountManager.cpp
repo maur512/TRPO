@@ -19,7 +19,7 @@ void addAccount(std::vector<acc::UserAccounts>* accounts_pointer){
     password = md5(password+acc::PASSWORD_SALT);
     while (role != 1 && role != 2) {
     std::cout << "Введите роль новой учётной записи (1- user, 2 - admin): " << std::endl;
-    std::cin >> role;
+    role = setIntValue();
     }
     accounts_pointer -> push_back(acc::UserAccounts(login, password, role));
 
@@ -63,7 +63,7 @@ void editAccount(std::vector<acc::UserAccounts>* accounts_pointer){
         edit_element ->password = password;
         while (role != 1 && role != 2 ) {
     std::cout << "Введите новую роль редактируемой учётной записи (1 - user, 2 - admin): " << std::endl;
-    std::cin >> role;
+    role = setIntValue();
         }
         edit_element ->role = role;
         std::cout << "Запись успешно отредактирована!" << std::endl;

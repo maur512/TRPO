@@ -4,6 +4,8 @@
 #include <string>
 #include <fstream>
 #include <iterator>
+#include <sstream>
+
 
 
 namespace acc {
@@ -26,3 +28,5 @@ namespace val {
 		
 	};
 }
+
+int setIntValue();

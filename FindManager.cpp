@@ -3,16 +3,17 @@
 void findName (std::vector<val::Values>* value_pointer) {
 
     std::string find_item;
-    std::cout << "Ââåäèòå èìÿ äëÿ ïîèñêà: \n";
-    cin >> find_item;
+    std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð¼Ñ Ð´Ð»Ñ Ð¿Ð¾Ð¸ÑÐºÐ°: \n";
+    std::cin >> find_item;
     
     std::vector<val::Values> ::iterator find_iterator;
     find_iterator = value_pointer->begin();
     while (find_iterator != value_pointer->end()) {
-        if (find_iterator->worker_name.find(find_item))
-            std::cout << "Íàéäåíî èìÿ: " << find_iterator->worker_name << std::endl <<
-            "Èìÿ:  " << find_iterator->worker_name << ", îòäåë:  " << find_iterator->worker_dep <<
-            ", äîëæíîñòü:  " << find_iterator->worker_pos << ", ç.ï.:  " << find_iterator->montly_wage << std::endl;
+        if (!find_iterator->worker_name.find(find_item)) {
+            std::cout << "ÐÐ°Ð¹Ð´ÐµÐ½Ð¾ Ð¸Ð¼Ñ: " << find_iterator->worker_name << std::endl <<
+            "Ð¸Ð¼Ñ:  " << find_iterator->worker_name << ", Ð¾Ñ‚Ð´ÐµÐ»:  " << find_iterator->worker_dep <<
+            ", Ð´Ð¾Ð»Ð¶Ð½Ð¾ÑÑ‚ÑŒ:  " << find_iterator->worker_pos << ", Ð·.Ð¿.:  " << find_iterator->montly_wage << std::endl;
+        }
         find_iterator++;
     }
 }
@@ -20,16 +21,16 @@ void findName (std::vector<val::Values>* value_pointer) {
 void findDep(std::vector<val::Values>* value_pointer) {
 
     std::string find_item;
-    std::cout << "Ââåäèòå äîëæíîñòü äëÿ ïîèñêà: \n";
-    cin >> find_item;
+    std::cout << "Ð’Ð²ÐµÐ¶Ð¸Ñ‚Ðµ Ð´Ð¾Ð»Ð¶Ð½Ð¾ÑÑ‚ÑŒ Ð´Ð»Ñ Ð¿Ð¾Ð¸ÑÐºÐ°: \n";
+    std::cin >> find_item;
 
     std::vector<val::Values> ::iterator find_iterator;
     find_iterator = value_pointer->begin();
     while (find_iterator != value_pointer->end()) {
-        if (find_iterator->worker_dep.find(find_item))
-            std::cout << "Íàéäåíà äîëæíîñòü: " << find_iterator->worker_dep << std::endl <<
-            "Èìÿ:  " << find_iterator->worker_name << ", îòäåë:  " << find_iterator->worker_dep <<
-            ", äîëæíîñòü:  " << find_iterator->worker_pos << ", ç.ï.:  " << find_iterator->montly_wage << std::endl;
+        if (!find_iterator->worker_pos.find(find_item))
+            std::cout << "ÐÐ°Ð¹Ð´ÐµÐ½Ð° Ð´Ð¾Ð»Ð¶Ð½Ð¾ÑÑ‚ÑŒ: " << find_iterator->worker_pos << std::endl <<
+            "Ð¸Ð¼Ñ:  " << find_iterator->worker_name << ", Ð¾Ñ‚Ð´ÐµÐ»:  " << find_iterator->worker_dep <<
+            ", Ð´Ð¾Ð»Ð¶Ð½Ð¾ÑÑ‚ÑŒ:  " << find_iterator->worker_pos << ", Ð·.Ð¿.:  " << find_iterator->montly_wage << std::endl;
         find_iterator++;
     }
 }
@@ -37,16 +38,16 @@ void findDep(std::vector<val::Values>* value_pointer) {
 void findWage(std::vector<val::Values>* value_pointer) {
 
     int find_item;
-    std::cout << "Ââåäèòå ç.ï. äëÿ ïîèñêà: \n";
-    cin >> find_item;
+    std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·.Ð¿. Ð´Ð»Ñ Ð¿Ð¾Ð¸ÑÐºÐ°: \n";
+    find_item = setIntValue();
 
     std::vector<val::Values> ::iterator find_iterator;
     find_iterator = value_pointer->begin();
     while (find_iterator != value_pointer->end()) {
-        if (find_iterator->montly_wage = find_item)
-            std::cout << "Íàéäåíà ç.ï.: " << find_iterator->montly_wage << std::endl <<
-            "Èìÿ:  " << find_iterator->worker_name << ", îòäåë:  " << find_iterator->worker_dep <<
-            ", äîëæíîñòü:  " << find_iterator->worker_pos << ", ç.ï.:  " << find_iterator->montly_wage << std::endl;
+        if (find_iterator->montly_wage == find_item)
+            std::cout << "ÐÐ°Ð¹Ð´ÐµÐ½Ð° Ð·.Ð¿.: " << find_iterator->montly_wage << std::endl <<
+            "Ð¸Ð¼Ñ:  " << find_iterator->worker_name << ", Ð¾Ñ‚Ð´ÐµÐ»:  " << find_iterator->worker_dep <<
+            ", Ð´Ð¾Ð»Ð¶Ð½Ð¾ÑÑ‚ÑŒ:  " << find_iterator->worker_pos << ", Ð·.Ð¿.:  " << find_iterator->montly_wage << std::endl;
         find_iterator++;
     }
 }
