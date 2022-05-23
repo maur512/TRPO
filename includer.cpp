@@ -14,6 +14,6 @@ int setIntValue() {
                 break;
             }
         }
-        std::cout << "Введите верное значение:  \n";
+        std::cout << ":::  \n";
     }
 }

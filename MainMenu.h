@@ -5,7 +5,7 @@
 #include "ValuesManager.h"
 #include "SortManager.h"
 #include "FindManager.h"
-
+#include "IndividualPractice.h"
 
 bool adminMenu(std::vector<acc::UserAccounts>*);
 bool userMenu(std::vector<val::Values>*);

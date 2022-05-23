@@ -7,3 +7,4 @@ void showUserMenu();
 void showSortMenu();
 void showFindMenu();
 void showLoginMenu();
+void showIndividualMenu();

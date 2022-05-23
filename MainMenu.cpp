@@ -1,7 +1,7 @@
 #include "MainMenu.h"
 
 bool adminMenu(std::vector<acc::UserAccounts>* accounts_pointer, std::vector<val::Values>* values_pointer) {
-    int menu_element = -1 , accounts_menu = -1, values_menu = -1, user_menu = -1, sort_menu = -1, find_menu = -1;
+    int ind_menu = -1, menu_element = -1 , accounts_menu = -1, values_menu = -1, user_menu = -1, sort_menu = -1, find_menu = -1;
     while (menu_element != 0){
     showAdminMenu(0);
         menu_element = setIntValue();
@@ -99,6 +99,23 @@ bool adminMenu(std::vector<acc::UserAccounts>* accounts_pointer, std::vector<val
             sort_menu = -1;
                 break;
                 case 4:
+                showIndividualMenu();
+                    ind_menu = setIntValue();
+                    if (ind_menu != 0) {
+                        switch (ind_menu) {
+                        case 1:
+                            allWageInDepartment(values_pointer);
+                            break;
+                        case 2:
+                            lowWageWorkers(values_pointer);
+                            break;
+                        case 0:
+                            break;
+                        }
+                    }
+                    ind_menu = -1;
+            
+
 
                 break;
             }
@@ -113,7 +130,7 @@ bool adminMenu(std::vector<acc::UserAccounts>* accounts_pointer, std::vector<val
 }
 
 bool userMenu(std::vector<val::Values>* values_pointer) {
-int menu_element = -1 , sort_menu = -1, find_menu = -1, user_menu = -1;
+int menu_element = -1 , sort_menu = -1, find_menu = -1, user_menu = -1, ind_menu = -1;
     while (menu_element != 0){
     showUserMenu();
         menu_element = setIntValue();
@@ -156,6 +173,21 @@ int menu_element = -1 , sort_menu = -1, find_menu = -1, user_menu = -1;
             sort_menu = -1;
             break;
             case 4:
+            showIndividualMenu();
+                    ind_menu = setIntValue();
+                    if (ind_menu != 0) {
+                        switch (ind_menu) {
+                        case 1:
+                            allWageInDepartment(values_pointer);
+                            break;
+                        case 2:
+                            lowWageWorkers(values_pointer);
+                            break;
+                        case 0:
+                            break;
+                        }
+                    }
+                    ind_menu = -1;
             break;
         }
     }

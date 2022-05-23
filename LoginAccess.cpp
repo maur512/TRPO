@@ -28,6 +28,7 @@
 		std::cin >> password;
 		while (md5(password + acc::PASSWORD_SALT) != login_found ->password) {
 			std::cout << "Incorect password!" << std::endl;
+			std::cin >> password;
 		} 
 		if (md5(password + acc::PASSWORD_SALT) == login_found ->password) return login_found;
 	}
