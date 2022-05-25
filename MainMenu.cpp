@@ -1,223 +1,293 @@
 #include "MainMenu.h"
 
-bool adminMenu(std::vector<acc::UserAccounts>* accounts_pointer, std::vector<val::Values>* values_pointer) {
-    int ind_menu = -1, menu_element = -1 , accounts_menu = -1, values_menu = -1, user_menu = -1, sort_menu = -1, find_menu = -1;
-    while (menu_element != 0){
-    showAdminMenu(0);
+bool adminMenu(std::vector<acc::UserAccounts>* accounts_pointer, std::vector<val::Values>* values_pointer) 
+{
+
+int ind_menu = DEFAULT_MENU_POINT, 
+    menu_element = DEFAULT_MENU_POINT , 
+    accounts_menu = DEFAULT_MENU_POINT, 
+    values_menu = DEFAULT_MENU_POINT, 
+    user_menu = DEFAULT_MENU_POINT, 
+    sort_menu = DEFAULT_MENU_POINT, 
+    find_menu = DEFAULT_MENU_POINT;
+
+
+    while (menu_element != EXIT_MENU_POINT)
+    {
+        showAdminMenu(EXIT_MENU_POINT);
         menu_element = setIntValue();
-        switch (menu_element) {
-            case 0:
-            break;
-            case 1:
-            while (accounts_menu != 0){
-                showAdminMenu(1);
-           accounts_menu = setIntValue();
-            switch (accounts_menu) {
-                case 0:
+            switch (menu_element) 
+            {
+
+                case EXIT_MENU_POINT:
                 break;
-                case 1:
-                addAccount(accounts_pointer);
+
+                case MENU_POINT_1:
+                while (accounts_menu != EXIT_MENU_POINT)
+                {
+                showAdminMenu(MENU_POINT_1);
+                accounts_menu = setIntValue();
+                    switch (accounts_menu) 
+                    {
+
+                        case EXIT_MENU_POINT:
+                        break;
+
+                        case MENU_POINT_1:
+                        addAccount(accounts_pointer);
+                        break;
+
+                        case MENU_POINT_2:
+                        openAccount(accounts_pointer);
+                        break;
+
+                        case MENU_POINT_3:
+                        editAccount(accounts_pointer);
+                        break;
+
+                        case MENU_POINT_4:
+                        deleteAccount(accounts_pointer);
+                        break;
+
+                    }
+                }
+                accounts_menu = DEFAULT_MENU_POINT;
                 break;
-                case 2:
-                openAccount(accounts_pointer);
+
+                case MENU_POINT_2:
+                while (values_menu != EXIT_MENU_POINT)
+                {
+                    showAdminMenu(MENU_POINT_2);
+                    values_menu = setIntValue();
+                    switch (values_menu) 
+                    {
+                        case EXIT_MENU_POINT:
+                        break;
+
+                        case MENU_POINT_1:
+                        openValue(values_pointer);
+                        break;
+
+                        case MENU_POINT_2:
+                        addValue(values_pointer);
+                        break;
+
+                        case MENU_POINT_3:
+                        editValue(values_pointer);
+                        break;
+
+                        case MENU_POINT_4:
+                        deleteValue(values_pointer);
+                        break;
+
+                    }
+                }
+                values_menu = DEFAULT_MENU_POINT;
                 break;
-                case 3:
-                editAccount(accounts_pointer);
-                break;
-                case 4:
-                deleteAccount(accounts_pointer);
-                break;
-            }
-            }
-            accounts_menu = -1;
-            break;
-            case 2:
-            while (values_menu != 0){
-                showAdminMenu(2);
-            values_menu = setIntValue();
-            switch (values_menu) {
-                case 0:
-                break;
-                case 1:
-                openValue(values_pointer);
-                break;
-                case 2:
-                addValue(values_pointer);
-                break;
-                case 3:
-                editValue(values_pointer);
-                break;
-                case 4:
-                deleteValue(values_pointer);
-                break;
-            }
-            }
-            values_menu = -1;
-            break;
-            case 3:
-            while (user_menu != 0){
-                showAdminMenu(3);
-            user_menu = setIntValue();
-            switch (user_menu) {
-                case 0:
-                break;
-                case 1:
-            openValue(values_pointer);
-                break;
-                case 2:
+
+                case MENU_POINT_3:
+                while (user_menu != EXIT_MENU_POINT)
+                {
+                    showAdminMenu(MENU_POINT_3);
+                    user_menu = setIntValue();
+                    switch (user_menu) 
+                    {
+                        case EXIT_MENU_POINT:
+                        break;
+
+                    case MENU_POINT_1:
+                    openValue(values_pointer);
+                    break;
+
+                    case MENU_POINT_2:
                     showFindMenu();
                     find_menu = setIntValue();
-                
-                    if (find_menu != 0) {
-                        switch (find_menu) {
-                        case 1:
+                    if (find_menu != EXIT_MENU_POINT) 
+                    {
+                        switch (find_menu) 
+                        {
+                            case MENU_POINT_1:
                             findName(values_pointer);
                             break;
-                        case 2:
+
+                            case MENU_POINT_2:
                             findDep(values_pointer);
                             break;
-                        case 3:
+
+                            case MENU_POINT_3:
                             findWage(values_pointer);
                             break;
-                        case 0:
+
+                            case EXIT_MENU_POINT:
                             break;
+
                         }
                     
                     }
-                    find_menu = -1;
-            
-                break;
-                case 3:
-                while (sort_menu != 0) {
-                while (sort_menu <0 || sort_menu >4){
-            showSortMenu();
-            sort_menu = setIntValue();
-                }
-            if (sort_menu != 0) valuesSort(values_pointer,sort_menu); else break;
-            sort_menu = -1;
-                }
-            sort_menu = -1;
-                break;
-                case 4:
-                showIndividualMenu();
+                    find_menu = DEFAULT_MENU_POINT;
+                    break;
+
+                    case MENU_POINT_3:
+                    while (sort_menu != EXIT_MENU_POINT) 
+                    {
+                        while (sort_menu <EXIT_MENU_POINT || sort_menu >MENU_POINT_4)
+                        {
+                        showSortMenu();
+                        sort_menu = setIntValue();
+                        }
+                        if (sort_menu != EXIT_MENU_POINT) valuesSort(values_pointer,sort_menu); 
+                        else break;
+                        sort_menu = DEFAULT_MENU_POINT;
+                    }
+                    sort_menu = DEFAULT_MENU_POINT;
+                    break;
+
+                    case MENU_POINT_4:
+                    showIndividualMenu();
                     ind_menu = setIntValue();
-                    if (ind_menu != 0) {
-                        switch (ind_menu) {
-                        case 1:
+                    if (ind_menu != EXIT_MENU_POINT) 
+                    {
+                        switch (ind_menu) 
+                        {
+                            case MENU_POINT_1:
                             allWageInDepartment(values_pointer);
                             break;
-                        case 2:
+                            case MENU_POINT_2:
                             lowWageWorkers(values_pointer);
                             break;
-                        case 0:
+                            case EXIT_MENU_POINT:
                             break;
                         }
                     }
-                    ind_menu = -1;
-            
-
-
+                    ind_menu = DEFAULT_MENU_POINT;
+                    break;
+                    }
+                }
+                user_menu = DEFAULT_MENU_POINT;
                 break;
             }
-            }
-            user_menu = -1;
-            break;
-        }
         
     }
-    menu_element = -1;
+    menu_element = DEFAULT_MENU_POINT;
     return true;
 }
 
-bool userMenu(std::vector<val::Values>* values_pointer) {
-int menu_element = -1 , sort_menu = -1, find_menu = -1, user_menu = -1, ind_menu = -1;
-    while (menu_element != 0){
+bool userMenu(std::vector<val::Values>* values_pointer) 
+{
+int menu_element = DEFAULT_MENU_POINT , 
+    sort_menu = DEFAULT_MENU_POINT, 
+    find_menu = DEFAULT_MENU_POINT, 
+    user_menu = DEFAULT_MENU_POINT, 
+    ind_menu = DEFAULT_MENU_POINT;
+
+    while (menu_element != EXIT_MENU_POINT)
+    {
     showUserMenu();
-        menu_element = setIntValue();
-        switch (menu_element) {
-            case 0:
+    menu_element = setIntValue();
+        switch (menu_element) 
+        {
+            case EXIT_MENU_POINT:
             break;
-            case 1:
+
+            case MENU_POINT_1:
             openValue(values_pointer);
             break;
-            case 2:
-                showFindMenu();
-                find_menu = setIntValue();
-                if (find_menu != 0) {
-                    switch (find_menu) {
-                    case 1:
+
+            case MENU_POINT_2:
+            showFindMenu();
+            find_menu = setIntValue();
+            if (find_menu != EXIT_MENU_POINT)
+            {
+                switch (find_menu) 
+                {
+                        case MENU_POINT_1:
                         findName(values_pointer);
                         break;
-                    case 2:
+
+                        case MENU_POINT_2:
                         findDep(values_pointer);
                         break;
-                    case 3:
+
+                        case MENU_POINT_3:
                         findWage(values_pointer);
                         break;
-                    case 0:
-                        break;
-                    }
 
+                        case EXIT_MENU_POINT:
+                        break;
                 }
-                find_menu = -1;
+
+            }
+            find_menu = DEFAULT_MENU_POINT;
             break;
-            case 3:
-            while (sort_menu != 0) {
-                while (sort_menu <0 || sort_menu >4){
-            showSortMenu();
-            sort_menu = setIntValue();
+
+            case MENU_POINT_3:
+            while (sort_menu != EXIT_MENU_POINT) 
+            {
+                while (sort_menu <EXIT_MENU_POINT || sort_menu >MENU_POINT_4)
+                {
+                    showSortMenu();
+                    sort_menu = setIntValue();
                 }
-            if (sort_menu != 0) valuesSort(values_pointer,sort_menu); else break;
-            sort_menu = -1;
-                }
-            sort_menu = -1;
+            if (sort_menu != EXIT_MENU_POINT) valuesSort(values_pointer,sort_menu);
+            else break;
+            sort_menu = DEFAULT_MENU_POINT;
+            }
+            sort_menu = DEFAULT_MENU_POINT;
             break;
-            case 4:
+
+            case MENU_POINT_4:
             showIndividualMenu();
                     ind_menu = setIntValue();
-                    if (ind_menu != 0) {
-                        switch (ind_menu) {
-                        case 1:
+                    if (ind_menu != EXIT_MENU_POINT) 
+                    {
+                        switch (ind_menu) 
+                        {
+                            case MENU_POINT_1:
                             allWageInDepartment(values_pointer);
                             break;
-                        case 2:
+
+                            case MENU_POINT_2:
                             lowWageWorkers(values_pointer);
                             break;
-                        case 0:
+
+                            case EXIT_MENU_POINT:
                             break;
+
                         }
                     }
-                    ind_menu = -1;
+                    ind_menu = DEFAULT_MENU_POINT;
             break;
         }
     }
-    menu_element = -1;
+    menu_element = DEFAULT_MENU_POINT;
     return true;
 }
 
-bool logon(std::vector<acc::UserAccounts>::iterator login_account, std::vector<acc::UserAccounts>* accounts_pointer, std::vector<val::Values>* values_pointer) {
+bool logon(std::vector<acc::UserAccounts>::iterator login_account, std::vector<acc::UserAccounts>* accounts_pointer, std::vector<val::Values>* values_pointer) 
+{
     char y_n = ' ';
+    
     switch (login_account -> role)
     {
-    case 2:
-    adminMenu(accounts_pointer, values_pointer);
-    std:: cout << "Вы хотите выйти? y/n" << std:: endl;
-    std::cin >> y_n;
-    if (y_n == 'y') return true;
-    y_n = ' ';
-    return false;
+        case MENU_POINT_2:
+        adminMenu(accounts_pointer, values_pointer);
+        std:: cout << "Вы хотите выйти? y/n" << std:: endl;
+        std::cin >> y_n;
+        if (y_n == 'y') return true;
+        y_n = ' ';
+        return false;
         break;
     
-    case 1:
-    userMenu(values_pointer);
-    std:: cout << "Вы хотите выйти? y/n" << std:: endl;
-    std::cin >> y_n;
-    if (y_n == 'y') return true;
-    y_n = ' ';
-    return false;
+        case MENU_POINT_1:
+        userMenu(values_pointer);
+        std:: cout << "Вы хотите выйти? y/n" << std:: endl;
+        std::cin >> y_n;
+        if (y_n == 'y') return true;
+        y_n = ' ';
+        return false;
         break;
     }
-    return true;
+return true;
 }
 
 

@@ -5,9 +5,7 @@
 #include "includer.h"
 #include "MainMenu.h"
 #include "LoginAccess.h"
-#include "accountManager.h"
 #include "init.h"
-#include "SortManager.h"
 
 using namespace std;
 
@@ -15,19 +13,23 @@ using namespace std;
 
 int main()
 {
-    std::vector<acc::UserAccounts>* accounts_pointer;
-    std::vector<acc::UserAccounts> accounts ;
-    accounts_pointer = &accounts;
-    std::vector<val::Values>* values_pointer;
-    std::vector<val::Values> values ;
-    values_pointer = &values;
+std::vector<acc::UserAccounts> accounts;
+std::vector<acc::UserAccounts>* accounts_pointer = &accounts;
+std::vector<val::Values> values;
+std::vector<val::Values>* values_pointer = &values;
+std::vector<val::working_wage> work_wage;
+std::vector<val::working_wage>* work_wage_pointer = &work_wage;
     accounts = initSize();
     values = initValues();
+    work_wage = initOneMonthWage();
+    set_work_wage_pointer_values(work_wage_pointer);
     setlocale(LC_ALL, "Russian");
         showLoginMenu();
        while( logon(password_input(login_input(accounts_pointer)),accounts_pointer,values_pointer) != true);
         saveAccountsToFile(accounts);
         saveValuesToFile(values);
+        saveWagesToFile(work_wage);
+    
     return 0;
 }
 

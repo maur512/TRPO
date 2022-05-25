@@ -1,9 +1,14 @@
 
+
+
+
     #include "SortManager.h"
     
-    void valuesSort(std::vector<val::Values>* values_pointer, int mode) {
+    void valuesSort(std::vector<val::Values>* values_pointer, int mode) 
+    {
 
-        switch(mode) {
+        switch(mode) 
+        {
             case 1:
             std::sort(values_pointer->begin(),values_pointer ->end(), name_sort());
             break;
@@ -19,8 +24,5 @@
 
             std::sort(values_pointer->begin(),values_pointer ->end(), wage_sort());
             break;
-
-
-
         }
     }

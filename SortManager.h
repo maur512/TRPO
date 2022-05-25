@@ -1,3 +1,7 @@
+/*
+Менеджер сортировки с компаратором
+*/
+
 #pragma once
 #include <algorithm>
 #include "includer.h"
