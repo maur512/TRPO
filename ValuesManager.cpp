@@ -29,6 +29,7 @@ void addValue(std::vector<val::Values>* values_pointer)
     setWorkWage(get_work_wage_pointer_values(), worker_name);
     montly_wage = averageWorkWage(get_work_wage_pointer_values(),worker_name);
     values_pointer -> push_back(val::Values(worker_name,worker_pos,worker_dep,montly_wage));
+    std::cout << "Работник успешно добавлен! \n";
 
 } 
  void deleteValue(std::vector<val::Values>* values_pointer)
@@ -104,8 +105,8 @@ void openValue(std::vector<val::Values>* values_pointer)
 
 void saveValuesToFile(std::vector<val::Values> values)
 {
-    std::ofstream out("valuesmanager.txt");
     std:: cout << "Сохранение базы данных в файл..." << std:: endl;
+    std::ofstream out("valuesmanager.txt");
     for (int i = 0; i < values.size(); i++){
     out << values[i].worker_name << ' ' << values[i].worker_pos 
     << ' ' << values[i].worker_dep << ' ' << values[i].montly_wage << std::endl;}
@@ -124,8 +125,8 @@ std::vector<val::working_wage>* get_work_wage_pointer_values()
 
 void saveWagesToFile(std::vector<val::working_wage> wages)
 {
-    std::ofstream out("onemonthwage.txt");
     std:: cout << "Сохранение базы зарплат в файл..." << std:: endl;
+    std::ofstream out("onemonthwage.txt");
     for (int i = 0; i < wages.size(); i++){
     out << wages[i].worker_NAME << '\n';
     for(int j = 0; j < wages[i].one_month_wage.size(); j++)

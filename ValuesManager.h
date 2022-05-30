@@ -14,7 +14,6 @@ void deleteValue(std::vector<val::Values>*);
 void editValue(std::vector<val::Values>*);
 void openValue(std::vector<val::Values>*);
 void saveValuesToFile(std::vector<val::Values>);
-void calculateMonthlyWage(std::vector<val::Values>*, std::vector<val::working_wage>*);
 
 void saveWagesToFile(std::vector<val::working_wage>);
 

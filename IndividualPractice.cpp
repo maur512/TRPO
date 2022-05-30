@@ -37,16 +37,21 @@ void allWageInDepartment(std::vector<val::Values>* values_pointer)
 void lowWageWorkers(std::vector<val::Values>* values_pointer)
 {
     std::cout << "Введите границу з.п.:  \n";
-int low_Wage = setIntValue();
-std::vector<val::Values> :: iterator low_wage = values_pointer->begin();
+    int low_Wage = setIntValue();
+    std::vector<val::Values> :: iterator low_wage = values_pointer->begin();
+    bool point = false;
+
 std::cout << "Сотрудники с меньшей з.п.: " << low_Wage << std::endl;
     while (low_wage != values_pointer->end())
     {
         if(low_wage ->montly_wage < low_Wage) 
+        {
         std::cout  <<
                 "имя:  " << low_wage->worker_name << ", отдел:  " << low_wage->worker_dep <<
                 ", должность:  " << low_wage->worker_pos << ", з.п.:  " << low_wage->montly_wage << std::endl;
+        point = true;
+        }
     low_wage++;
     }
-
+    if (point == false) std::cout << "Таких бедолаг не найдено! \n";
 }

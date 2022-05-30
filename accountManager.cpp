@@ -115,8 +115,8 @@ void openAccount(std::vector<acc::UserAccounts>* accounts_pointer)
 
 void saveAccountsToFile(std::vector<acc::UserAccounts> accounts)
 {
-    std::ofstream out("accountmanager.txt");
     std:: cout << "Сохранение аккаунтов в файл..." << std:: endl;
+    std::ofstream out("accountmanager.txt");
     for (int i = 0; i < accounts.size(); i++){
     out << accounts[i].login << ' ' << accounts[i].password 
     << ' ' << accounts[i].role << std::endl;}

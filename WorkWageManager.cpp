@@ -13,11 +13,8 @@ int averageWorkWage(std::vector<val::working_wage>* work_wage_pointer,std::strin
     work_wage_it++;
     }
     std::cout << work_wage_it ->worker_NAME << std::endl;
-    for (int i = 0; i < work_wage_it ->one_month_wage.size(); i++){
+    for (int i = 0; i < work_wage_it ->one_month_wage.size(); i++)
         average_wage = average_wage + work_wage_it ->one_month_wage[i];
-        std::cout << i << " :: " << work_wage_it -> one_month_wage[i] << std::endl;}
-        std::cout << average_wage << std::endl;
-        std::cout << work_wage_it -> one_month_wage.size() << std::endl;
     average_wage = average_wage / work_wage_it -> one_month_wage.size();
     return average_wage;
 
@@ -73,7 +70,6 @@ void deleteWorkWage(std::vector<val::working_wage>* work_wage_pointer_, std::str
         work_wage_it++;
     }
     work_wage_pointer_->erase(work_wage_it);
-
 }
 
 void changeWorkWage(std::vector<val::working_wage>* work_wage_pointer_,std::string worker_name_, std::string worker_name_changed)
