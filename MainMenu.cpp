@@ -271,7 +271,7 @@ bool logon(std::vector<acc::UserAccounts>::iterator login_account, std::vector<a
     {
         case MENU_POINT_2:
         adminMenu(accounts_pointer, values_pointer);
-        std:: cout << "Вы хотите выйти? y/n" << std:: endl;
+        std:: cout << "Выход из аккаунта... \n Вы хотите выйти? y/n" << std:: endl;
         std::cin >> y_n;
         if (y_n == 'y') return true;
         y_n = ' ';
@@ -280,7 +280,7 @@ bool logon(std::vector<acc::UserAccounts>::iterator login_account, std::vector<a
     
         case MENU_POINT_1:
         userMenu(values_pointer);
-        std:: cout << "Вы хотите выйти? y/n" << std:: endl;
+        std:: cout << "Выход из аккаунта... \n Вы хотите выйти? y/n" << std:: endl;
         std::cin >> y_n;
         if (y_n == 'y') return true;
         y_n = ' ';

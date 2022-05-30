@@ -4,20 +4,21 @@
 int setIntValue()
 {
     std::string number;
-    int menu_value = -1;
+    int value = -1;
     while (std::getline(std::cin, number))
     {
         std::stringstream ss(number);
-        if (ss >> menu_value)
+        if (ss >> value)
         {
             if (ss.eof())
             {
-                return menu_value;
+                return value;
                 break;
             }
         }
         std::cout << ":::  \n";
     }
+    return value;
 }
 
 

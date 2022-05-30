@@ -21,9 +21,9 @@ void findName (std::vector<val::Values>* value_pointer)
         point = true;
         }
     find_iterator++;
-    if (point == false) std::cout << "Не найдено ни одного работника с таким именем! \n";
+    
     }
-
+    if (point == false) std::cout << "Не найдено ни одного работника с таким именем! \n";
 }
 
 void findDep(std::vector<val::Values>* value_pointer) 
